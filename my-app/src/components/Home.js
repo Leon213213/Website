@@ -48,12 +48,11 @@ export default function Home() {
               <button className="button" onClick={() => navigate('/About')}>About</button>
               <button className="button" onClick={() => navigate('/Inquiries')}>Inquiries</button>
             </nav>
-            <div className="login">
-            <button id="login" onClick={() => login}>Login</button>
+            {/*<div className="login">*/}
             <button id="dark" onClick={() => setIsDarkMode(!isDarkMode)}>Dark mode</button>
-            </div>
+             {/*</div>*/}
             <img src="./images/logo.webp" alt="logo" className="img2"></img>
-          </div>
+          </div> 
         </div>
 
         <br></br>
