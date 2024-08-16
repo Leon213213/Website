@@ -1,4 +1,4 @@
-README for Final Assignment:
+README for website editing:
 
 1)Install node.js from node.js official website.
 2)In terminal, go to the directory of the project (.\Project1\my-app).
