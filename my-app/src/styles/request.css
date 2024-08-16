@@ -1,0 +1,36 @@
+html.dark input[type="submit" i] {
+    background-color: white;
+    color: black;
+  }
+
+  hr {
+    border-color: black;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .form {
+    border-style: solid;
+    border-color: black;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    margin-left: 11px;
+    margin-right: 1px;
+    margin-bottom: -14px;
+    background-color: #B9B4C7;
+    border-radius: 8px;
+  }
+
+  input {
+    border-radius: 3px;
+  }
+
+  textarea {
+    border-style: solid;
+    border-color: black;
+    border-radius: 3px;
+  }
+
+  label {
+    text-align: left;
+  }

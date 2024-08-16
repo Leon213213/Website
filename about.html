@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="preload" href="historians.webp" as="image">
+  <meta charset="UTF-8">
+  <title>Lorem Ipsum</title>
+  <style>
+    html {
+      background-color: #AC9691;
+    }
+
+    #dark {
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 5px;
+      margin-top: 15px;
+      border-radius: 5px;
+      opacity: 0.7;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    .paragraph {
+      text-align: left;
+      margin-left: 150px;
+      margin-right: 150px;
+      padding: 10px;
+      text-indent: 30px;
+      border-style: solid;
+      border-color: black;
+      background-color: #DDC6C1;
+    }
+
+    .top {
+      border-style: solid;
+      border-color: black;
+      background-color: #DDC6C1;
+      padding-bottom: 25px;
+      margin-left: 350px;
+      margin-right: 350px;
+      border-radius: 8px;
+    }
+
+    html.dark {
+      background-color: black;
+      color: white;
+
+      button {
+        color: black;
+        background-color: white;
+      }
+
+      .paragraph {
+        background-color: black;
+        color: white;
+        border-color: white;
+      }
+
+      .top {
+        background-color: black;
+        color: white;
+        border-color: white;
+      }
+
+      img {
+        border-color: white;
+      }
+
+      #dark {
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 5px;
+        border-radius: 5px;
+        opacity: 0.7;
+      }
+    }
+
+    footer {
+      text-align: center;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .container img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 30px;
+      border-style: solid;
+      border-color: black;
+    }
+
+    hr {
+      border-color: black;
+    }
+
+    button {
+      background-color: #86E548;
+      color: white;
+      border: none;
+      padding: 5px;
+      margin: 2px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @snowflake-keyframes {
+      0% {
+        transform: translateY(0px);
+      }
+
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      z-index: 9999;
+      opacity: 0.5;
+      font-size: 24px;
+      color: #fff;
+      animation-name: snowflake-fall;
+      animation-duration: 10s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes snowflake-fall {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="snowflakeContainer"></div>
+  <header>
+    <div class="top">
+      <h1>About Us</h1>
+      <nav>
+        <button onclick="window.location.href='index.html';">Home</button>
+        <button onclick="window.location.href='donate.html';">Donate</button>
+        <button onclick="window.location.href='about.html';">About</button>
+        <button onclick="window.location.href='contact.html';">Contact</button>
+      </nav>
+      <button id="dark">Dark mode</button>
+    </div>
+  </header>
+
+  <br>
+  <div class="container">
+    <img src="historians.webp" alt="historians" style="width:220px; height:auto">
+  </div>
+  <div class="paragraph">
+    Welcome to the hub where history and typography converge. We are a group of dedicated researchers and web developers
+    who have meticulously crafted a platform to demystify the origins and usage of 'Lorem Ipsum'—the standard filler
+    text used in the publishing and web design industries since the 16th century. Our team comprises experts in
+    classical literature, linguistics, and modern web technology. Together, we delve into historical manuscripts to
+    uncover the first uses of 'Lorem Ipsum', trace its evolution through centuries of typographical practices, and
+    present our findings on this comprehensive website. Our mission is to provide educational resources, thorough
+    research, and insightful analyses that elucidate 'Lorem Ipsum's' significance in design and its continued relevance
+    in digital content creation. By bridging the gap between the past and present, we aim to offer a valuable resource
+    for designers, typographers, and historians alike.
+  </div>
+
+  <footer>
+    <br>
+    <p><b>All rights reserved &copy;</b></p>
+  </footer>
+
+  <script>
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.textContent = '❄';
+      snowflake.style.left = Math.random() * 100 + 'vw';
+      snowflake.style.animationDuration = Math.random() * 3 + 5 + 's'; 
+      snowflake.style.opacity = Math.random();
+      snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; 
+
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 5000); 
+    }
+
+    setInterval(createSnowflake, 300); 
+
+    document.addEventListener('DOMContentLoaded', function () {
+  const myButton = document.getElementById("dark");
+  const prefersDark = localStorage.getItem('darkMode') === 'true'; 
+
+  function toggleDarkMode() {
+    document.documentElement.classList.toggle('dark', !prefersDark);
+    localStorage.setItem('darkMode', !prefersDark);
+  }
+
+  
+  if (prefersDark) {
+    document.documentElement.classList.add('dark');
+  }
+
+  myButton.addEventListener('click', toggleDarkMode);
+});
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var img = new Image();
+      img.src = '/historians.webp';
+    });
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+#par {
+    background-color: #B9B4C7;
+    border-color: black;
+    margin-left: 10px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    margin-top: 30px;
+    border-radius: 8px;
+    font-size: 17px;
+    border-style: solid;
+}
+
+.donate {
+    border-style: solid;
+    border-color: black;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 0px;
+    background-color: #B9B4C7;
+    border-radius: 8px;
+    border-width: 2px;
+}
+
+textarea {
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.submitButton {
+    background-color: #86E548;
+    color: white;
+    cursor: pointer;
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+.input{
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.email{
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.name{
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+:global(.dark) .donate,
+:global(.dark) .par,
+:global(.dark) .top,
+:global(.dark) button {
+    background-color: black;
+    color: white;
+    border-color: white;
+}
+
+
+

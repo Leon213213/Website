@@ -1,0 +1,24 @@
+.img1 {
+    width:220px; height:auto;
+  }
+
+  html.dark {
+    .img1 {
+      border-color: white;
+      width:220px; height:auto;
+    }
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  .container img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    border-style: solid;
+    border-color: black;
+  }
