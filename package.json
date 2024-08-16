@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "1.0.0",
-  "homepage": "http://www.leonsheetmusic.com",
+  "homepage": "https://leon213213.github.io/website",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
