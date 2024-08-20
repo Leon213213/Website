@@ -1,6 +1,6 @@
-import React from 'react';
+// Donate.js
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import styles from "../styles/donate.module.css";
 
 const useDarkMode = () => {
@@ -27,18 +27,57 @@ function Navigation() {
 
 export default function Donate() {
   const [isDarkMode, setIsDarkMode] = useDarkMode();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [amount, setAmount] = useState('');
 
+  useEffect(() => {
+    // Load the PayPal SDK script
+    const loadPaypalScript = () => {
+      return new Promise((resolve, reject) => {
+        if (document.querySelector('script[src="https://www.paypal.com/sdk/js?client-id=BAAe9CrajeyNJeufn16TTMTreAD40GD2lT6A8ClyTV82zlut9gEMPkKAFweMxaOOxlX758mLqRvdK_ymFA&components=hosted-buttons&enable-funding=venmo&currency=USD"]')) {
+          resolve();
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.src = "https://www.paypal.com/sdk/js?client-id=BAAe9CrajeyNJeufn16TTMTreAD40GD2lT6A8ClyTV82zlut9gEMPkKAFweMxaOOxlX758mLqRvdK_ymFA&components=hosted-buttons&enable-funding=venmo&currency=USD";
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+      });
+    };
+
+    const renderPaypalButtons = () => {
+      if (window.paypal && window.paypal.HostedButtons) {
+        window.paypal.HostedButtons({
+          hostedButtonId: "MJZKQFWYSPVCJ"
+        }).render("#paypal-container-MJZKQFWYSPVCJ");
+      }
+    };
+
+    loadPaypalScript()
+      .then(renderPaypalButtons)
+      .catch(error => console.error('PayPal SDK failed to load:', error));
+
+    return () => {
+      // Delay clearing the PayPal container
+      const delay = 300; // Delay in milliseconds
+
+      setTimeout(() => {
+        const container = document.getElementById("paypal-container-MJZKQFWYSPVCJ");
+        if (container) {
+          container.innerHTML = "";
+        }
+      }, delay);
+    };
+  }, []);
+
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent the default form submission
-
-    console.log("Donation submitted!");
-
-    // Show a pop-up message
-    alert(`Thank you for donating ${name}!`);
+    event.preventDefault();
+    alert(`Thank you for donating, ${name}!`);
     setName('');
     setEmail('');
     setAmount('');
@@ -46,11 +85,10 @@ export default function Donate() {
 
   return (
     <>
-      <div id="snowflakeContainer"></div>
       <header>
-        <div class="top">
+        <div className="top">
           <div className="container-top">
-            <img src="./images/logo.webp" alt="logo" className="img1"></img>
+            <img src="./images/logo.webp" alt="logo" className="img1" />
             <nav className="container-top-side-by-side">
               <button className="button" onClick={() => navigate('/')}>Home</button>
               <button className="button" onClick={() => navigate('/Donate')}>Donate</button>
@@ -58,16 +96,14 @@ export default function Donate() {
               <button className="button" onClick={() => navigate('/Inquiries')}>Inquiries</button>
             </nav>
             <button id="dark" onClick={() => setIsDarkMode(!isDarkMode)}>Dark mode</button>
-            <img src="./images/logo.webp" alt="logo" className="img2"></img>
+            <img src="./images/logo.webp" alt="logo" className="img2" />
           </div>
         </div>
-
-        <br></br>
-
+        <br />
       </header>
-      <div class='container-side-by-side'>
-        <div class="genre">
-          <h3>Piano</h3>
+      <div className="container-side-by-side">
+        <div className="genre">
+        <h3>Piano</h3>
           <hr></hr>
           <button className="button" id="Jazz" onClick={() => navigate('/Jazz')}>Jazz</button>
           <button className="button" id="Animation" onClick={() => navigate('/Animation')}>Animation</button>
@@ -85,20 +121,13 @@ export default function Donate() {
           <button className="button" id="Animation_chords" onClick={() => navigate('/Animation_chords')}>Animation</button>
           <button className="button" id="ForeignFolk" onClick={() => navigate('/ForeignFolk')}>Foreign/Folk</button>
           <button className="button" id="Oldies" onClick={() => navigate('/Oldies')}>Oldies</button>
+        
         </div>
         <div className="container-on-top">
-
           <div className="container">
             <div>
-              <form onSubmit={handleSubmit} className={`${styles.donate} ${isDarkMode ? styles.dark : ''}`}>
-                <h4 id="contact_sub">Donate</h4>
-                <label htmlFor="name">Name:</label><br />
-                <input type="text" id="name" className={styles.name} value={name} name="name" required onChange={(e) => setName(e.target.value)} /><br />
-                <label htmlFor="email">Email:</label><br />
-                <input type="email" id="email" className={styles.email} value={email} name="email" required onChange={(e) => setEmail(e.target.value)} /><br />
-                <label htmlFor="amount">Donation Amount ($):</label><br />
-                <input type="number" id="amount" value={amount} name="amount" className={styles.input} required onChange={(e) => setAmount(e.target.value)} /><br />
-                <input type="submit" value="Donate Now" id="butt" className={styles.submitButton} />
+              <form className={`${styles.donate} ${isDarkMode ? styles.dark : ''}`} onSubmit={handleSubmit}>
+                  <div id="paypal-container-MJZKQFWYSPVCJ"></div>
               </form>
               <div id="par">
                 <p>We appreciate your support in helping us keep this site running!</p>
@@ -107,13 +136,11 @@ export default function Donate() {
           </div>
           <div className="contact">
             <h3 id="contact_sub">Contact us</h3>
-            <p>Email: <a href="mailto:loremipsum@gmail.com">loremipsum@gmail.com</a><br></br></p>
-            <p>Phone: <a href="tel:956-312-0015">956-312-0015</a></p>
-            <p><b>All rights reserved &copy;</b></p>
+            <p>Email: <a href="mailto:lz00962@georgiasouthern.edu">lz00962@georgiasouthern.edu</a><br></br></p>
           </div>
         </div>
         <div className="latest">
-          <h3>Latest</h3>
+        <h3>Latest</h3>
           <hr></hr>
           <ul id="list">
             <li style={{ marginBottom: 35 }}><a target="_blank" href="https://drive.google.com/file/d/16WWLa6hxyBCkuCxH6j5beXHT9Q43-glr/view?usp=sharing">Farewell To Sue.pdf</a></li>
@@ -125,7 +152,6 @@ export default function Donate() {
           </ul>
         </div>
       </div>
-
       <footer>
         <br />
         <p><b>All rights reserved &copy;</b></p>

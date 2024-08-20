@@ -85,9 +85,7 @@ export default function About() {
           </div>
           <div className="contact">
             <h3 id="contact_sub">Contact us</h3>
-            <p>Email: <a href="mailto:loremipsum@gmail.com">loremipsum@gmail.com</a><br></br></p>
-            <p>Phone: <a href="tel:956-312-0015">956-312-0015</a></p>
-            <p><b>All rights reserved &copy;</b></p>
+            <p>Email: <a href="mailto:lz00962@georgiasouthern.edu">lz00962@georgiasouthern.edu</a><br></br></p>
           </div>
         </div>
         <div className="latest">

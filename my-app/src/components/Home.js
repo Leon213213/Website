@@ -41,7 +41,7 @@ export default function Home() {
       <header>
         <div class="top">
           <div className="container-top">
-            <img src="./images/logo.webp" alt="logo" className="img1"></img>
+            <img src="./images/logo.webp" class="stuck-image" alt="logo" className="img1"></img>
             <nav className="container-top-side-by-side">
               <button className="button" onClick={() => navigate('/')}>Home</button>
               <button className="button" onClick={() => navigate('/Donate')}>Donate</button>
@@ -51,7 +51,7 @@ export default function Home() {
             {/*<div className="login">*/}
             <button id="dark" onClick={() => setIsDarkMode(!isDarkMode)}>Dark mode</button>
              {/*</div>*/}
-            <img src="./images/logo.webp" alt="logo" className="img2"></img>
+            <img src="./images/logo.webp" alt="logo" class="stuck-image" className="img2"></img>
           </div> 
         </div>
 
@@ -117,8 +117,7 @@ export default function Home() {
           </div>
           <div className="contact">
             <h3 id="contact_sub">Contact us</h3>
-            <p>Email: <a href="mailto:loremipsum@gmail.com">loremipsum@gmail.com</a><br></br></p>
-            <p>Phone: <a href="tel:956-312-0015">956-312-0015</a></p>
+            <p>Email: <a href="mailto:lz00962@georgiasouthern.edu">lz00962@georgiasouthern.edu</a><br></br></p>
             <p><b>All rights reserved &copy;</b></p>
           </div>
 
